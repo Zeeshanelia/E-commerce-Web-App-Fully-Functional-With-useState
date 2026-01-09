@@ -39,17 +39,21 @@ const ProductsList = [
   },
   {
     id: 2,
-    name: "Women Denim Jacket",
-    img: fFashion2, price: 2199,
-    oldPrice: 2799, salesMela: false, freshArrival: true,
-    category: "Women"
+    name: "Denim Jacket",
+    img: fFashion2,
+    price: 2199,
+    oldPrice: 2799,
+    salesMela: false,
+    freshArrival: true,
+    category: "Men"
   },
+
   { id: 3, name: "Women Kurti Set", img: fFashion3, price: 1999, oldPrice: 2599, salesMela: true, freshArrival: false, category: "Women" },
   { id: 4, name: "Women Handbag", img: fFashion4, price: 1599, oldPrice: 1999, salesMela: false, freshArrival: true, category: "Women" },
   { id: 5, name: "Women Fresh Arrival Top", img: fFashion5, price: 899, oldPrice: 1299, salesMela: false, freshArrival: true, category: "Fresh Arrival" },
   { id: 6, name: "Women Dress Combo", img: fFashion6, price: 2499, oldPrice: 3999, salesMela: true, freshArrival: false, category: "Sales Mela" },
-  { id: 7, name: "Women Casual Top", img: fFashion7, price: 899, oldPrice: 1299, salesMela: false, freshArrival: true, category: "Fresh Arrival" },
-  { id: 8, name: "Women Evening Dress", img: fFashion8, price: 1299, oldPrice: 1799, salesMela: false, freshArrival: true, category: "Fresh Arrival" },
+  { id: 7, name: "Women Casual Top", img: fFashion7, price: 899, oldPrice: 1299, salesMela: false, freshArrival: true, category: "Women" },
+  { id: 8, name: "Women Evening Dress", img: fFashion8, price: 1299, oldPrice: 1799, salesMela: false, freshArrival: true, category: "Women" },
 
 
 
@@ -67,18 +71,20 @@ const ProductsList = [
   { id: 15, name: "Kids New Arrival Dress", img: img115, price: 799, oldPrice: 1099, salesMela: false, freshArrival: true, category: "Kids" },
 
 
-  
-  // Misc / Others
+
+  //  Others
   { id: 16, name: "Trendy Bag", img: img111, price: 699, oldPrice: 999, salesMela: false, freshArrival: true, category: "Sales Mela" },
   { id: 17, name: "Sneakers Combo", img: img117, price: 1999, oldPrice: 2799, salesMela: true, freshArrival: false, category: "Sales Mela" },
-  { id: 18, name: "Casual Hat", img: img118, price: 499, oldPrice: 699, salesMela: false, freshArrival: true, category: "Fresh Arrival" },
+
+  { id: 18, name: "Casual Hat", img: img118, price: 499, oldPrice: 699, salesMela: false, freshArrival: true, category: "Kids" },
+
   { id: 19, name: "Kids Summer Shorts", img: img119, price: 399, oldPrice: 599, salesMela: false, freshArrival: true, category: "Kids" },
   { id: 20, name: "Stylish Jacket", img: img120, price: 1599, oldPrice: 2199, salesMela: true, freshArrival: false, category: "Men" },
-  { id: 21, name: "Trendy Sneakers", img: img121, price: 2299, oldPrice: 2999, salesMela: true, freshArrival: true, category: "Men" },
-  { id: 22, name: "Girls Party Dress", img: img122, price: 1299, oldPrice: 1799, salesMela: false, freshArrival: true, category: "Women" },
+  { id: 21, name: "Trendy Sneakers", img: img122, price: 2299, oldPrice: 2999, salesMela: true, freshArrival: true, category: "Kids" },
+  { id: 22, name: "Girls Party Dress", img: img121, price: 1299, oldPrice: 1799, salesMela: false, freshArrival: true, category: "Kids" },
   { id: 23, name: "Boys Hoodie", img: img123, price: 899, oldPrice: 1199, salesMela: true, freshArrival: false, category: "Kids" },
   { id: 24, name: "Casual Cap", img: img124, price: 299, oldPrice: 499, salesMela: false, freshArrival: true, category: "Fresh Arrival" },
-  { id: 25, name: "Denim Pants", img: img125, price: 1399, oldPrice: 1999, salesMela: true, freshArrival: false, category: "Men" },
+  { id: 25, name: "Denim Pants", img: img125, price: 1399, oldPrice: 1999, salesMela: true, freshArrival: false, category: "Kids" },
 ];
 
 export default ProductsList;

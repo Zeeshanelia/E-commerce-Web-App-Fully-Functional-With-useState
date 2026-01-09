@@ -1,15 +1,26 @@
+import { useState } from 'react';
 import Nav from '../Nav/Nav';
 import Banner from './../Banner/Banner';
 import Products from './../Products/Products'
 
 const Home = () => {
 
+    const [searchedProduct , setSearchedProduct] = useState('')
+
+    const handleScrolling = () => {
+        const section = document.getElementById("product-section")
+        if (section) {
+            section.scrollIntoView({ behavior: "smooth" })
+        }
+    }
+
 
     return (<>
 
-        <Nav />
+        <Nav  handleScrolling={handleScrolling}  
+        setSearchedProduct={setSearchedProduct} />
         <Banner />
-        <Products />
+        <Products searchedProduct={searchedProduct} />
 
 
     </>)
