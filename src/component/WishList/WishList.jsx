@@ -1,13 +1,10 @@
 
 
-
-
-
 const WishList = () => {
 
-    return(<>
-    
-    
+    return (<>
+
+
     </>)
 }
 
