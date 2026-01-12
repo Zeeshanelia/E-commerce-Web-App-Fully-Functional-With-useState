@@ -24,7 +24,7 @@ const Home = () => {
         <Banner />
         <Products searchedProduct={searchedProduct} />
         <Cart />
-        {/* <WishList /> */}
+        <WishList />
     </>)
 }
 
