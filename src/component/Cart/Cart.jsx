@@ -1,12 +1,13 @@
 import "remixicon/fonts/remixicon.css";
-import img111 from "/images/img111.jpg";
+// import img111 from "/images/img111.jpg";
 
-const Cart = () => {
+const Cart = ({activePanel , handlClosePanel, cart }) => {
   return (
-    <aside className="fixed top-0 right-0 h-screen w-full sm:w-[420px] bg-gradient-to-b from-gray-50 to-gray-100 z-50 shadow-2xl flex flex-col transform translate-x-full">
+    <aside className={`fixed top-0 right-0 h-screen w-full sm:w-[420px] bg-gradient-to-b from-gray-50 to-gray-100 z-50 shadow-2xl flex flex-col transform transition-translate duration-500 
+    ${activePanel === 'Cart' ? 'translate-x-0' : 'translate-x-full'} `}>
 
       {/* HEADER */}
-      <header className="px-6 py-5 bg-gradient-to-r from-purple-600 to-indigo-600 text-white flex justify-between items-center shrink-0">
+      <header className="px-6 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white flex justify-between items-center shrink-0">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
             <i className="ri-shopping-cart-2-line text-xl" />
@@ -20,15 +21,29 @@ const Cart = () => {
           </div>
         </div>
 
-        <button className="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 transition hover:rotate-90 flex items-center justify-center">
+        <button onClick={handlClosePanel} className="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 transition hover:rotate-90 flex items-center justify-center">
           <i className="ri-close-line text-xl" />
         </button>
       </header>
 
-      {/* ITEMS */}
-      <section className="flex-1 overflow-y-auto px-5 py-4 space-y-4">
 
-        <div className="relative bg-white rounded-2xl shadow-md p-4">
+
+
+                      {/***** ITEMS *******/}
+      
+      <section className="flex-1  overflow-y-auto px-5 py-4 space-y-1 scroll">
+
+       {
+        cart.map((product , index)=>{
+          
+          // console.log("CART VALUE:", cart, Array.isArray(cart));
+          console.log('PRODUCT IN CART:', cart);
+
+
+          return(
+             <div key={product.id ?? index}
+              className="relative bg-white rounded-2xl shadow-md p-4">
+
           <button className="absolute -top-2 -right-2 w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center hover:scale-110 transition">
             <i className="ri-close-line text-sm" />
           </button>
@@ -36,20 +51,31 @@ const Cart = () => {
           <div className="flex gap-4">
             <div className="relative w-24 h-24 rounded-xl overflow-hidden shadow">
               <img
-                src={img111}
+                src={product.img}
                 alt="product"
-                className="w-full h-full object-cover"
-              />
-              <span className="absolute -top-2 -left-2 bg-purple-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                className="w-full h-full object-cover" />
+
+              {/* <span className="absolute -top-2 -left-2 bg-purple-500 text-white text-xs font-bold px-2 py-1 rounded-full">
                 NEW
-              </span>
+              </span> */}
             </div>
 
             <div className="flex-1 flex flex-col justify-between">
               <div>
                 <div className="flex justify-between items-start">
-                  <h2 className="font-bold text-gray-800">Running Shoes</h2>
-                  <span className="font-bold text-purple-600">$129.99</span>
+                  <h2 className="font-bold text-gray-800">{product.name}</h2>
+                    <div className="flex items-center  justify-between px-4">
+
+                        {(item.salesMela || item.freshArrival) && (
+                            <span className="text-gray-500 line-through">
+                                ${item.oldPrice}
+                            </span>
+                        )}
+
+
+                        <span className="text-blue-600 font-semibold text-xl">${item.price.toFixed(2)}
+                        </span>
+                    </div>
                 </div>
                 <p className="text-sm text-gray-500 mt-1">
                   Cushion technology for long runs
@@ -75,11 +101,14 @@ const Cart = () => {
           </div>
           
         </div>
+          )
+        })
+       }
 
-         {/* SUMMARY */}
+         {/***********  SUMMARY   ***********/}
      
-        <div className="bg-white rounded-2xl shadow-md p-5 space-y-3">
-          <h3 className="font-bold text-gray-800 flex items-center gap-2">
+        <div className=" sticky bottom-0 mb-0 z-10 bg-white rounded-2xl shadow-md p-2 space-y-1  overflow-y-auto">
+          <h3 className="font-bold text-gray-900 flex items-center gap-2">
             <i className="ri-file-list-3-line text-purple-600" />
             Order Summary
           </h3>
@@ -104,10 +133,6 @@ const Cart = () => {
             <span className="text-2xl font-bold text-purple-600">$275.58</span>
           </div>
           
-        <p className="text-center text-sm text-gray-400 flex items-center justify-center gap-2">
-          <i className="ri-shopping-cart-line" />
-          Add more items to your cart
-        </p>
         </div>
 
       </section>
@@ -116,8 +141,8 @@ const Cart = () => {
       
 
       {/* FOOTER */}
-      <footer className="px-5 py-4 bg-white border-t shrink-0">
-        <button className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold py-4 rounded-xl hover:shadow-lg transition flex items-center justify-center gap-2">
+      <footer className="px-5 py-2 bg-white border-t shrink-0">
+        <button className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold py-3 rounded-xl hover:shadow-lg transition flex items-center justify-center gap-2">
           Proceed to Checkout
           <i className="ri-arrow-right-line" />
         </button>
@@ -134,7 +159,7 @@ export default Cart;
 
 
 
-
+    
 
 
 

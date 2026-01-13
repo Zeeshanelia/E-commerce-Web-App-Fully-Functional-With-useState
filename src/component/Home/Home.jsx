@@ -8,6 +8,8 @@ import WishList from './../WishList/WishList'
 
 const Home = () => {
     const [searchedProduct, setSearchedProduct] = useState('')
+    const [activePanel, setActivePanel] = useState(null)
+    const [cart, setCart] = useState([])
 
     const handleScrolling = () => {
         const section = document.getElementById("product-section")
@@ -16,15 +18,45 @@ const Home = () => {
         }
     }
 
+    // Card & WishList Fn
+    const handlePanel = (tabName) => {
+        setActivePanel(previous => (
+            previous === tabName ? null : tabName
+        ))
+    }
+
+    // handlClosePanel of Card & WishList 
+    const handlClosePanel = () => setActivePanel(null)
+
+    const addToCart = (product) => {
+        setCart([...cart , product]);
+          // setActivePanel(prev => prev === 'Cart' ? prev : 'Cart')
+        setActivePanel('Cart');        // auto OPEN cart drawer when product adding 
+    };
+
+
 
     return (<>
 
         <Nav handleScrolling={handleScrolling}
-            setSearchedProduct={setSearchedProduct} />
+            setSearchedProduct={setSearchedProduct}
+            handlePanel={handlePanel} />
+
         <Banner />
-        <Products searchedProduct={searchedProduct} />
-        <Cart />
-        <WishList />
+
+
+        {/* Use item — the current product in the .map() iteration , Wrap in an arrow function () => addToCart(item) so that it passes the product on click */}
+        <Products searchedProduct={searchedProduct}
+            addToCart={addToCart} />
+
+
+        <Cart activePanel={activePanel}
+            handlClosePanel={handlClosePanel}
+            cart={cart}
+        />
+
+
+        <WishList handlClosePanel={handlClosePanel} activePanel={activePanel} />
     </>)
 }
 

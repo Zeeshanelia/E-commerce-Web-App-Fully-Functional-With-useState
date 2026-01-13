@@ -1,7 +1,7 @@
 import { useState } from "react"
 import ProductsList from "./../Products/ProductList"
 
-const Products = ({ searchedProduct }) => {
+const Products = ({ searchedProduct, addToCart }) => {
     const catog = ["All", "Women", "Men", "Kids", "Fresh Arrival", "Sales Mela"]
     const [isActive, setIsActive] = useState("All")
     const filterItems = ProductsList.filter((item) => {
@@ -43,17 +43,28 @@ const Products = ({ searchedProduct }) => {
                     </div>
 
                     <img src={item.img} alt={item.name} className="w-full h-48 object-cover rounded-md mb-4" />
+
+
                     <h3 className="text-lg font-semibold mb-2">{item.name}</h3>
 
 
                     <div className="flex items-center  justify-between px-4">
-                        <span className="text-blue-600 font-semibold text-xl">${item.price.toFixed(2)}</span>
 
-                        <span className="text-gray-500 line-through">$ {item.oldPrice}</span>
+                        {(item.salesMela || item.freshArrival) && (
+                            <span className="text-gray-500 line-through">
+                                ${item.oldPrice}
+                            </span>
+                        )}
+
+
+
+
+                        <span className="text-blue-600 font-semibold text-xl">${item.price.toFixed(2)}
+                        </span>
                     </div>
 
 
-                    <button className="mt-4 w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition-colors duration-300">
+                    <button onClick={() => addToCart(item)} className="mt-4 w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition-colors duration-300">
                         Add to Cart
                     </button>
 
