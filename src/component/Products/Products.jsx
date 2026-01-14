@@ -26,45 +26,45 @@ const Products = ({ searchedProduct, addToCart }) => {
         // if (isActive === "All") return true;
         return <div>
             <div>
-                <div className=" w-full border-1 border-gray-200 rounded-lg p-1 hover:shadow-lg hover:scale-105 transition-transform duration-300">
+                <div className="border border-gray-200 rounded-lg p-1 shadow-xl hover:scale-105 transition-transform duration-300">
 
                     <div className="flex justify-between items-center mb-1 px-2">
-                        <button > <i className="ri-user-heart-fill text-red-500 text-2xl"></i>
+                        <button className="hover:scale-120 transition-transform duration-300">
+                            <i className="ri-user-heart-fill text-red-500 text-2xl"> </i>
                         </button>
 
-                        {
+
+                        {        //******   Sale or New Arrival
+
                             (item.salesMela || item.freshArrival) && (
                                 <span
-                                    className={`font-bold p-2 py-1 text-black text-xs rounded ${item.salesMela ? "bg-purple-400" : "bg-green-500"}`}>
+                                    className={`font-bold p-2 py-1 text-black text-xs rounded  ${item.salesMela ? "bg-purple-400" : "bg-green-500"}`}>
                                     {item.salesMela ? "Sale" : "New"}
                                 </span>
                             )
                         }
                     </div>
 
-                    <img src={item.img} alt={item.name} className="w-full h-48 object-cover rounded-md mb-4" />
 
 
-                    <h3 className="text-lg font-semibold mb-2">{item.name}</h3>
 
+                    <img src={item.img} alt={item.name} className="w-full h-48 object-cover rounded-md mb-2" />
+                    <h3 className="text-lg font-semibold ">{item.name}</h3>
 
-                    <div className="flex items-center  justify-between px-4">
-
+                    <div className="flex items-center  justify-between px-2">
                         {(item.salesMela || item.freshArrival) && (
                             <span className="text-gray-500 line-through">
                                 ${item.oldPrice}
                             </span>
                         )}
 
-
-
-
                         <span className="text-blue-600 font-semibold text-xl">${item.price.toFixed(2)}
                         </span>
+
                     </div>
 
 
-                    <button onClick={() => addToCart(item)} className="mt-4 w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition-colors duration-300">
+                    <button onClick={() => addToCart(item)} className="mt-2 w-full bg-blue-500 text-white py-1 font-semibold rounded-md hover:bg-blue-700 transition-colors duration-300">
                         Add to Cart
                     </button>
 
@@ -82,9 +82,11 @@ const Products = ({ searchedProduct, addToCart }) => {
 
                     <div key={index} >
                         <button className={`text-zink-500 font-semibold  hover:bg-blue-400 px-4 py-1 rounded-xl hover:scale-125 transition-translate duration-300 
-                            ${isActive === item ? "bg-blue-400" : "bg-gray-300"}`
-                        } onClick={() => setIsActive(item)}>
-                            {item} </button>
+                            ${isActive === item ? "bg-blue-400" : "bg-gray-300"}`} onClick={() => setIsActive(item)}>
+
+                            {item}
+
+                        </button>
                     </div>
                 ))}
 

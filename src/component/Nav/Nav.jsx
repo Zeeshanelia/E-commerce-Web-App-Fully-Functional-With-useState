@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "remixicon/fonts/remixicon.css";
 
-const Nav = ({ handleScrolling  , setSearchedProduct ,handlePanel}) => {
+const Nav = ({ handleScrolling, setSearchedProduct, handlePanel, totalItem }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -38,8 +38,8 @@ const Nav = ({ handleScrolling  , setSearchedProduct ,handlePanel}) => {
       <div className="flex items-center gap-6">
 
         {/*Heart WishList   or     Notification icon */}
-        <div onClick={()=> handlePanel("WishList")} className="relative cursor-pointer hover:text-blue-600 transition">
-          
+        <div onClick={() => handlePanel("WishList")} className="relative cursor-pointer hover:text-blue-600 transition">
+
           <i className="ri-poker-hearts-fill text-3xl text-gray-700"></i>
           <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center ">
             {/* animate-bounce */}
@@ -47,13 +47,31 @@ const Nav = ({ handleScrolling  , setSearchedProduct ,handlePanel}) => {
           </span>
         </div>
 
-        {/* Cart */}
-        <div onClick={()=> handlePanel("Cart")}  className="relative cursor-pointer hover:text-blue-600 transition">
+
+        {/*********** Cart ************/}
+
+        <div
+          onClick={() => handlePanel("Cart")}
+          className="relative cursor-pointer hover:text-blue-600 transition"
+        >
           <i className="ri-shopping-cart-2-line text-3xl text-gray-700"></i>
+
           <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center animate-pulse">
-            2
+
+          
+            {!!Number(totalItem) && (
+              <span>{Number(totalItem)}</span>
+            )}
+
+
           </span>
+
+
+
         </div>
+
+
+
 
         {/* Hamburger Menu */}
         <button
