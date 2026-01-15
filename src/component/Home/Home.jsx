@@ -5,12 +5,14 @@ import Products from './../Products/Products'
 import Cart from './../Cart/Cart'
 import WishList from './../WishList/WishList'
 import OrderSummary from './../OrderSummary/OrderSummary'
-
+import OrderPlaced from './../OrderPlaced/OrderPlaced'
 
 const Home = () => {
     const [searchedProduct, setSearchedProduct] = useState('')
     const [activePanel, setActivePanel] = useState(null)
     const [cart, setCart] = useState([])
+    const [ orderSummary , setOrderSummary] = useState(false)
+    const [ orderPlaced , setOrderPlaced] = useState(false)
 
     const handleScrolling = () => {
         const section = document.getElementById("product-section")
@@ -98,23 +100,35 @@ const Home = () => {
             totalItem={totalItem}
             shipingFee={shipingFee}
             totalSummary={totalSummary}
+            setOrderSummary={setOrderSummary}
         />
 
 
-        <WishList handlClosePanel={handlClosePanel}
+        <WishList
+            handlClosePanel={handlClosePanel}
             activePanel={activePanel}
 
-
         />
+
 
 
         {/* OrderSummary */}
-        <OrderSummary
+
+        { orderSummary &&   <OrderSummary
             cart={cart}
             subTotal={subTotal}
             shipingFee={shipingFee}
-            totalSummary={totalSummary}
-        />
+            totalSummary={totalSummary} 
+            setOrderPlaced={setOrderPlaced}
+            setOrderSummary={setOrderSummary}
+            setCart={setCart}
+            />
+        }
+
+
+         {orderPlaced && (
+        <OrderPlaced setOrderPlaced={setOrderPlaced} />
+      )}
 
     </>)
 }

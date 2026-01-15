@@ -8,8 +8,8 @@ function App() {
   return (
     <>
       <div className="w-full bg-white mx-auto text-center  ">
-
         <Home />
+
 
       </div>
     </>
