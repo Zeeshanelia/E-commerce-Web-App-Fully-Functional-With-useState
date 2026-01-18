@@ -171,7 +171,6 @@ const Cart = ({activePanel , handlClosePanel, cart , removeItem  , quantityIncre
 
           Proceed to Checkout
           <i className="ri-arrow-right-line" />
-
         </button>
       </footer>
 

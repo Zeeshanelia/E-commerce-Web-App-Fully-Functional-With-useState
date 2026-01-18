@@ -14,6 +14,8 @@ const Home = () => {
     const [ orderSummary , setOrderSummary] = useState(false)
     const [ orderPlaced , setOrderPlaced] = useState(false)
 
+     const [ wishList , setWishLis] = useState([])
+
     const handleScrolling = () => {
         const section = document.getElementById("product-section")
         if (section) {
@@ -73,6 +75,14 @@ const Home = () => {
     const shipingFee = totalItem * 2
     const totalSummary = subTotal + shipingFee
 
+
+
+                  // WishList Fn 
+    const addToWishList = (product) => {
+
+        setWishLis([...wishList , product ])
+    }
+
     return (<>
         <Nav handleScrolling={handleScrolling}
             setSearchedProduct={setSearchedProduct}
@@ -87,6 +97,7 @@ const Home = () => {
         <Products
             searchedProduct={searchedProduct}
             addToCart={addToCart}
+            addToWishList={addToWishList}
         />
 
 
@@ -107,6 +118,7 @@ const Home = () => {
         <WishList
             handlClosePanel={handlClosePanel}
             activePanel={activePanel}
+            wishList={wishList}
 
         />
 

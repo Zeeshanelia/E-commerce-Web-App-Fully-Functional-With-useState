@@ -1,7 +1,7 @@
 import { useState } from "react"
 import ProductsList from "./../Products/ProductList"
 
-const Products = ({ searchedProduct, addToCart }) => {
+const Products = ({ searchedProduct, addToCart , addToWishList }) => {
     const catog = ["All", "Women", "Men", "Kids", "Fresh Arrival", "Sales Mela"]
     const [isActive, setIsActive] = useState("All")
     const filterItems = ProductsList.filter((item) => {
@@ -29,7 +29,11 @@ const Products = ({ searchedProduct, addToCart }) => {
                 <div className="border border-gray-200 rounded-lg p-1 shadow-xl hover:scale-105 transition-transform duration-300">
 
                     <div className="flex justify-between items-center mb-1 px-2">
-                        <button className="hover:scale-120 transition-transform duration-300">
+                        
+                        <button onClick={()=> addToWishList(item)} className="hover:scale-120 transition-transform duration-300">
+
+                        {/* wishList icon  */}
+
                             <i className="ri-user-heart-fill text-red-500 text-2xl"> </i>
                         </button>
 

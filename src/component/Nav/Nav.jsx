@@ -57,17 +57,10 @@ const Nav = ({ handleScrolling, setSearchedProduct, handlePanel, totalItem }) =>
           <i className="ri-shopping-cart-2-line text-3xl text-gray-700"></i>
 
           <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center animate-pulse">
-
-          
             {!!Number(totalItem) && (
               <span>{Number(totalItem)}</span>
             )}
-
-
           </span>
-
-
-
         </div>
 
 
