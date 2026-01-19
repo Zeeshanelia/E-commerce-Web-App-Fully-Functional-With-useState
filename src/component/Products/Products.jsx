@@ -1,7 +1,8 @@
 import { useState } from "react"
 import ProductsList from "./../Products/ProductList"
+import WishList from "../WishList/WishList"
 
-const Products = ({ searchedProduct, addToCart , addToWishList }) => {
+const Products = ({ searchedProduct, addToCart , addToWishList , wishList}) => {
     const catog = ["All", "Women", "Men", "Kids", "Fresh Arrival", "Sales Mela"]
     const [isActive, setIsActive] = useState("All")
     const filterItems = ProductsList.filter((item) => {
@@ -11,8 +12,6 @@ const Products = ({ searchedProduct, addToCart , addToWishList }) => {
             (isActive === "Fresh Arrival" && item.freshArrival) ||
             (isActive === "Sales Mela" && item.salesMela) ||
             (isActive === item.category)
-
-
 
         const matchedSearching = item.name.toLowerCase().includes(searchedProduct.toLowerCase())
         return matchedCatog && matchedSearching
@@ -24,21 +23,27 @@ const Products = ({ searchedProduct, addToCart , addToWishList }) => {
 
     const renderingProducts = filterItems.map((item) => {
         // if (isActive === "All") return true;
+
         return <div>
             <div>
                 <div className="border border-gray-200 rounded-lg p-1 shadow-xl hover:scale-105 transition-transform duration-300">
 
                     <div className="flex justify-between items-center mb-1 px-2">
                         
-                        <button onClick={()=> addToWishList(item)} className="hover:scale-120 transition-transform duration-300">
+                        <button onClick={()=> addToWishList(item)} 
+                        className={`hover:scale-120 transition-transform duration-300 
+                            ${wishList.some(w => w.id === item.id) ?'text-red-500' : 'text-zinc-500'}   `}>
 
-                        {/* wishList icon  */}
+                        
+                        {  /* wishList icon  */}
 
-                            <i className="ri-user-heart-fill text-red-500 text-2xl"> </i>
+                            <i className="ri-user-heart-fill text-2xl"> </i>
                         </button>
 
 
-                        {        //******   Sale or New Arrival
+                        {       
+                        
+                               //******   Sale or New Arrival
 
                             (item.salesMela || item.freshArrival) && (
                                 <span

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "remixicon/fonts/remixicon.css";
 
-const Nav = ({ handleScrolling, setSearchedProduct, handlePanel, totalItem }) => {
+const Nav = ({ handleScrolling, setSearchedProduct, handlePanel, totalItem, wishList }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -37,15 +37,27 @@ const Nav = ({ handleScrolling, setSearchedProduct, handlePanel, totalItem }) =>
       {/* Right Icons */}
       <div className="flex items-center gap-6">
 
-        {/*Heart WishList   or     Notification icon */}
-        <div onClick={() => handlePanel("WishList")} className="relative cursor-pointer hover:text-blue-600 transition">
 
+
+
+
+        {/************  Heart WishList  OR  Notification icon  ************/}
+        <div
+          onClick={() => handlePanel("WishList")}
+          className="relative cursor-pointer hover:text-blue-600 transition"
+        >
           <i className="ri-poker-hearts-fill text-3xl text-gray-700"></i>
-          <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center ">
-            {/* animate-bounce */}
-            1
-          </span>
+
+          {wishList.length > 0 && (
+            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center animate-bounce">
+              {wishList.length}
+            </span>
+          )}
         </div>
+
+
+
+
 
 
         {/*********** Cart ************/}
@@ -56,11 +68,11 @@ const Nav = ({ handleScrolling, setSearchedProduct, handlePanel, totalItem }) =>
         >
           <i className="ri-shopping-cart-2-line text-3xl text-gray-700"></i>
 
-          <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center animate-pulse">
+          
             {!!Number(totalItem) && (
-              <span>{Number(totalItem)}</span>
+              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center animate-pulse">{Number(totalItem)}</span>
             )}
-          </span>
+         
         </div>
 
 
@@ -70,8 +82,7 @@ const Nav = ({ handleScrolling, setSearchedProduct, handlePanel, totalItem }) =>
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
-          className="md:hidden text-3xl text-gray-700 hover:text-blue-600 transition"
-        >
+          className="md:hidden text-3xl text-gray-700 hover:text-blue-600 transition">
           <i className={menuOpen ? "ri-close-line" : "ri-menu-line"}></i>
         </button>
       </div>
@@ -85,8 +96,7 @@ const Nav = ({ handleScrolling, setSearchedProduct, handlePanel, totalItem }) =>
               <input
                 type="text"
                 placeholder="Search products..."
-                className="w-full px-4 py-2 bg-transparent outline-none"
-              />
+                className="w-full px-4 py-2 bg-transparent outline-none" />
               <button className="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
                 <i className="ri-search-line"></i>
               </button>
@@ -94,10 +104,14 @@ const Nav = ({ handleScrolling, setSearchedProduct, handlePanel, totalItem }) =>
 
             {/* Links */}
             <nav className="space-y-3 text-gray-700 font-medium">
-              <a href="#" className="block hover:text-blue-600 transition">🏠 Home</a>
-              <a href="#" className="block hover:text-blue-600 transition">🛍️ Shop</a>
-              <a href="#" className="block hover:text-blue-600 transition">📦 Categories</a>
-              <a href="#" className="block hover:text-blue-600 transition">📞 Contact</a>
+              <a href="#" className="block hover:text-blue-600 transition">
+                <i className="ri-home-9-line text-xl"></i>  Home</a>
+              <a href="#" className="block hover:text-blue-600 transition">
+                <i className="ri-shopping-bag-line text-xl"></i> Shop</a>
+              <a href="#" className="block hover:text-blue-600 transition">
+                <i className="ri-article-fill text-xl"></i> Categories</a>
+              <a href="#" className="block hover:text-blue-600 transition">
+                <i className="ri-phone-line text-xl"></i> Contact</a>
             </nav>
           </div>
         </div>
