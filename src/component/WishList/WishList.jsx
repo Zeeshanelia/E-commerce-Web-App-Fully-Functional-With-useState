@@ -2,7 +2,7 @@
 const WishList = ({ activePanel, handlClosePanel, wishList, addToCart, clearWishList, quantityIncrement, removeItem }) => {
 
     return (<>
-        <aside className={`fixed top-0 right-0 h-screen w-full sm:w-[420px] bg-gradient-to-b from-gray-50 to-gray-100 z-50 shadow-2xl flex flex-col transform transition-translate duration-500 ${activePanel === 'WishList' ? 'translate-x-0' : 'translate-x-full'} `} >
+        <aside className={`fixed top-0 right-0 h-screen w-full sm:w-[420px] max-w-full bg-gradient-to-b from-gray-50 to-gray-100 z-50 shadow-2xl flex flex-col transform transition-transform duration-500 overflow-y-auto overscroll-contain ${activePanel === 'WishList' ? 'translate-x-0' : 'translate-x-full'} `} >
 
             {/* HEADER */}
             <header className="px-6 py-5 bg-gradient-to-r from-purple-600 to-indigo-600 text-white flex justify-between items-center">

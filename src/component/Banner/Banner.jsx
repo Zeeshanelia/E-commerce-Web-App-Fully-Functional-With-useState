@@ -70,11 +70,11 @@ const Banner = () => {
         </div>
 
     
-        <div className="h-[300px] w-full md:w-1/2 lg:w-2/5">
+        <div className="md:h-[300px] w-full md:w-1/2 lg:w-2/5">
           <img
             src="/images/2-girl-shopping-bags-hands.png"
             alt="Girl holding shopping bags"
-            className="w-full h-[310px] object-cover"
+            className="md:w-full md:h-[310px] object-cover"
           />
         </div>
 

@@ -2,7 +2,7 @@ import { useState } from "react"
 import ProductsList from "./../Products/ProductList"
 import WishList from "../WishList/WishList"
 
-const Products = ({ searchedProduct, addToCart , addToWishList , wishList}) => {
+const Products = ({ searchedProduct, addToCart, addToWishList, wishList }) => {
     const catog = ["All", "Women", "Men", "Kids", "Fresh Arrival", "Sales Mela"]
     const [isActive, setIsActive] = useState("All")
     const filterItems = ProductsList.filter((item) => {
@@ -29,21 +29,22 @@ const Products = ({ searchedProduct, addToCart , addToWishList , wishList}) => {
                 <div className="border border-gray-200 rounded-lg p-1 shadow-xl hover:scale-105 transition-transform duration-300">
 
                     <div className="flex justify-between items-center mb-1 px-2">
-                        
-                        <button onClick={()=> addToWishList(item)} 
-                        className={`hover:scale-120 transition-transform duration-300 
-                            ${wishList.some(w => w.id === item.id) ?'text-red-500' : 'text-zinc-500'}   `}>
 
-                        
-                        {  /* wishList icon  */}
+                        <button onClick={() => addToWishList(item)}
+                            className={`hover:scale-120 transition-transform duration-300 
+                            ${wishList.some( w => w.id === item.id) ? 'text-red-500' : 'text-zinc-500'}  
+                                 `}>
+
+
+                            {  /* wishList icon  */}
 
                             <i className="ri-user-heart-fill text-2xl"> </i>
                         </button>
 
 
-                        {       
-                        
-                               //******   Sale or New Arrival
+                        {
+
+                            //******   Sale or New Arrival
 
                             (item.salesMela || item.freshArrival) && (
                                 <span
@@ -84,13 +85,13 @@ const Products = ({ searchedProduct, addToCart , addToWishList , wishList}) => {
 
 
     return (<>
-        <section id="product-section" className="max-w-[79rem] mx-auto px-10 mt-10 mb-10">
+        <section id="product-section" className="max-w-[79rem] mx-auto md:px-10 px-3 :border mt-10 mb-10">
 
-            <div className="flex  justify-center gap-6 items-center ">
+            <div className="md:flex grid grid-cols-4 space-x-4  justify-center gap-6 md:items-center ">
                 {catog.map((item, index) => (
 
                     <div key={index} >
-                        <button className={`text-zink-500 font-semibold  hover:bg-blue-400 px-4 py-1 rounded-xl hover:scale-125 transition-translate duration-300 
+                        <button className={`text-zink-500 font-semibold  hover:bg-blue-400 md:px-4 px-1 py-2 rounded-xl hover:scale-125 transition-translate duration-300 
                             ${isActive === item ? "bg-blue-400" : "bg-gray-300"}`} onClick={() => setIsActive(item)}>
 
                             {item}
@@ -103,10 +104,13 @@ const Products = ({ searchedProduct, addToCart , addToWishList , wishList}) => {
 
 
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mt-6">
+            <div className="grid grid-cols-2 sm:grid-cols-2  lg:grid-cols-4 xl:grid-cols-5 md:gap-6 gap-2 mt-6">
+
                 {filterItems.length === 0 ? (
                     <div className="col-span-full flex justify-center items-center">
-                        <p className="mt-10 text-gray-400 font-semibold border p-3 rounded">
+
+
+                        <p className="mt-10 text-gray-400 font-semibold border md:p-3 rounded">
                             No Product Found
                         </p>
                     </div>

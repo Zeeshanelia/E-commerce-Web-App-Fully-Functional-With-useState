@@ -5,14 +5,14 @@ const Nav = ({ handleScrolling, setSearchedProduct, handlePanel, totalItem, wish
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 w-full h-16 backdrop-blur-md bg-white/70 flex items-center justify-between px-4 md:px-10 shadow-lg z-50 transition-all duration-300">
+    <header className="fixed top-0 md:w-full w-screen md:h-16 h-12 backdrop-blur-md bg-white/70 flex items-center justify-between  px-1 md:px-10 shadow-lg z-50 transition-all duration-300">
 
       {/* Logo */}
-      <div className="flex items-center gap-3 cursor-pointer group">
+      <div className="flex items-center  gap-2 cursor-pointer group">
         <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-500 to-indigo-500 flex items-center justify-center shadow-md group-hover:scale-105 transition">
-          <i className="ri-shopping-bag-line text-xl text-white"></i>
+          <i className="ri-shopping-bag-line md:text-xl text-white"></i>
         </div>
-        <span className="font-bold text-gray-800 text-lg tracking-wide">ShopEase</span>
+        <span className="md:font-bold font-semibold text-gray-800 md:text-lg tracking-wide">ShopEase</span>
       </div>
 
       {/* Desktop Search */}

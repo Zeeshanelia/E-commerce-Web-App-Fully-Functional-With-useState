@@ -3,7 +3,7 @@ import "remixicon/fonts/remixicon.css";
 const Cart = ({ activePanel, handlClosePanel, cart, removeItem, quantityIncrement, quantityDecrease, subTotal, totalItem, shipingFee, totalSummary, setOrderSummary }) => {
   return (
 
-    <aside className={`fixed top-0 right-0 h-screen w-full sm:w-[420px] bg-gradient-to-b from-gray-50 to-gray-100 z-50 shadow-2xl flex flex-col transform transition-translate duration-500 
+    <aside className={`fixed top-0 right-0 h-screen w-full sm:w-[420px] bg-gradient-to-b from-gray-50 to-gray-100 z-50 shadow-2xl flex flex-col transform transition-transform duration-500
     ${activePanel === 'Cart' ? 'translate-x-0' : 'translate-x-full'} `}>
 
 
